@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 public abstract class Movimiento {
   private LocalDate fecha;
-  //En ningún lenguaje de programación usen jamás doubles para modelar dinero en el mundo real
-  //siempre usen numeros de precision arbitraria, como BigDecimal en Java y similares
   private double monto;
   private Cuenta cuenta;
+  private Boolean esDeposito;
 
-  public Movimiento(LocalDate fecha, double monto, Cuenta cuenta) {
+  public Movimiento(LocalDate fecha, double monto, Cuenta cuenta, Boolean esDeposito) {
     this.fecha = fecha;
     this.monto = monto;
     this.cuenta = cuenta;
+    this.esDeposito = esDeposito;
   }
 
   public double getMonto() {
@@ -23,8 +23,13 @@ public abstract class Movimiento {
     return fecha;
   }
 
-  public boolean esDeLaFecha(LocalDate fecha) {
+  public Boolean esDeposito(){
+    return esDeposito;
+  }
+
+  public Boolean esDeLaFecha(LocalDate fecha) {
     return this.fecha.equals(fecha);
   }
-  }
+
+  public abstract void ejecutar();
 }
