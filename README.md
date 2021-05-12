@@ -1,7 +1,7 @@
 ## Monedero
 
 ### Diagrama de clases propuesto
-![diagramaDeClases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/iancrespiok/dds-monedero-java8/main/diagramaDeClases.plantuml?token=AKL4DPUCCHGKQ4VV227VBSLAS3XM4)
+![diagramaDeClases](http://www.plantuml.com/plantuml/png/POyn3i8m34Ntd29ZE_G4I2mK9ZY4SOq8QcjK9nKIukua3g4LU7A-Nxw_uIn-0lGMUn2n9vxTu6Zq_3GsreNm2jeD74NjCCHv5abQEi8XGPMYjNaPawrQkhEuOaGtmk1XgbR4_f5Me-Fnbzaiq4wtPK2Wx_YJfkGKVNTvMVohEUlib_pfAqNBaiaseTckZZLBbBzHhZS0)
 
 ### Contexto
 
