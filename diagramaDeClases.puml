@@ -1,0 +1,34 @@
+@startuml Monedero
+
+abstract class Movimiento{
+    fecha
+    monto
+    cuenta
+    esDeLaFecha(fecha)
+}
+
+class Deposito{
+    ejecutar()
+}
+
+class Extraccion{
+    ejecutar();
+}
+
+class Cuenta{
+    saldo
+    movimientos
+    depositar(monto)
+    extraer(monto)
+}
+
+Deposito -u-> Movimiento
+Extraccion -u-> Movimiento
+
+
+
+
+
+
+
+@enduml

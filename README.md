@@ -1,5 +1,8 @@
 ## Monedero
 
+### Diagrama de clases propuesto
+![diagramaDeClases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/iancrespiok/dds-monedero-java8/main/diagramaDeClases.plantuml?token=AKL4DPUCCHGKQ4VV227VBSLAS3XM4)
+
 ### Contexto
 
 Este repositorio contiene el código de un _monedero virtual_, al que podemos agregarle y quitarle dinero, a través 
