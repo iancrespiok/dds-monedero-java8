@@ -8,6 +8,7 @@ public class Extraccion extends Movimiento{
   }
 
   public void ejecutar(){
-
+    double saldoPrevio = this.getCuenta().getSaldo();
+    this.getCuenta().setSaldo(saldoPrevio-this.getMonto());
   }
 }

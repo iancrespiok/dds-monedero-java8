@@ -23,6 +23,10 @@ public abstract class Movimiento {
     return fecha;
   }
 
+  public Cuenta getCuenta() {
+    return cuenta;
+  }
+
   public Boolean esDeposito(){
     return esDeposito;
   }

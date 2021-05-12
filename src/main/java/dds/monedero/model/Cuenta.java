@@ -11,22 +11,19 @@ import java.util.List;
 import java.util.zip.DeflaterOutputStream;
 
 public class Cuenta {
-
   private double saldo = 0;
   private int depositosDiarios = 3;
   private double limiteExtraccionDiario = 1000;
   private List<Movimiento> movimientos = new ArrayList<>();
 
-  public Cuenta() {
-    saldo = 0;
+  public Cuenta(double montoInicial, int depositosDiarios, double limiteExtraccionDiario) {
+    this.saldo = montoInicial;
+    this.depositosDiarios = depositosDiarios;
+    this.limiteExtraccionDiario = limiteExtraccionDiario;
   }
 
-  public Cuenta(double montoInicial) {
-    saldo = montoInicial;
-  }
-
-  public void setMovimientos(List<Movimiento> movimientos) {
-    this.movimientos = movimientos;
+  public void agregarMovimiento(Movimiento movimiento) {
+    this.movimientos.add(movimiento);
   }
 
   public int getDepositosDiarios() {
@@ -37,15 +34,38 @@ public class Cuenta {
     return limiteExtraccionDiario;
   }
 
+  public void setDepositosDiarios(int depositosDiarios) {
+    this.depositosDiarios = depositosDiarios;
+  }
+
+  public void setLimiteExtraccionDiario(double limiteExtraccionDiario) {
+    this.limiteExtraccionDiario = limiteExtraccionDiario;
+  }
+
+  public void setSaldo(double saldo) {
+    this.saldo = saldo;
+  }
+
+  public List<Movimiento> getMovimientos() {
+    return movimientos;
+  }
+
+  public double getSaldo() {
+    return saldo;
+  }
+
   public void depositar(double monto) {
     validarDeposito(monto);
-    Deposito deposito = new Deposito(LocalDate.now(), monto, this, true);
-    new Movimiento(LocalDate.now(), monto, true).agregateA(this);
+    Deposito deposito = new Deposito(LocalDate.now(), monto, this);
+    deposito.ejecutar();
+    this.agregarMovimiento(deposito);
   }
 
   public void extraer(double monto) {
     validarExtraccion(monto);
-    new Movimiento(LocalDate.now(), monto, false).agregateA(this);
+    Extraccion extraccion = new Extraccion(LocalDate.now(), monto, this);
+    extraccion.ejecutar();
+    this.agregarMovimiento(extraccion);
   }
 
   private void validarDeposito(double monto) {
@@ -95,17 +115,4 @@ public class Cuenta {
         .mapToDouble(Movimiento::getMonto)
         .sum();
   }
-
-  public List<Movimiento> getMovimientos() {
-    return movimientos;
-  }
-
-  public double getSaldo() {
-    return saldo;
-  }
-
-  public void setSaldo(double saldo) {
-    this.saldo = saldo;
-  }
-
 }
